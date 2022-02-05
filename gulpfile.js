@@ -38,15 +38,6 @@ gulp.task( 'bs-reload', function(done) {
 browserSync.reload();
 done();
 });
-gulp.task("ejs", (done) => {
-gulp
-.src(["./*.ejs"])
-.pipe( plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }) )//エラーチェック
-.pipe(ejs())
-.pipe(rename({extname: ".html"})) //拡張子をhtmlに
-.pipe(gulp.dest("./")); //出力先
-done();
-});
 // 監視
 gulp.task( 'watch', function(done) {
 gulp.watch( './src/scss/**/*.scss', gulp.task('sass') ); //sassが更新されたらgulp sassを実行
@@ -78,4 +69,16 @@ return gulp
 .src('./src/img/base/*.{png,jpg,gif,svg}')
 .pipe(imagemin(imageminOption))
 .pipe(gulp.dest('./src/img'));
+});
+
+
+
+gulp.task("ejs", function (done) {
+  return gulp
+    .src(["./*.ejs"])
+    .pipe(plumber())
+    .pipe(ejs())
+    .pipe(rename({ extname: ".html" }))
+    .pipe(gulp.dest("./"));
+  done();
 });
