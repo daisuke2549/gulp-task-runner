@@ -5,10 +5,22 @@ let notify = require('gulp-notify'); //エラー発生時にデスクトップ�
 let sassGlob = require('gulp-sass-glob'); //@importの記述を簡潔にする
 let browserSync = require( 'browser-sync' ); //ブラウザを自動的にリロード
 let autoprefixer = require('gulp-autoprefixer'); //ベンダープレフィックスをつける
-let cssdeclsort = require('css-declaration-sorter'); //css並べ替え
-// let imagemin = require('gulp-imagemin');
-let optipng = require('imagemin-optipng');
-let mozjpeg = require('imagemin-mozjpeg');
+const { src, dest, series, parallel, watch } = require("gulp");
+const imagemin = require("gulp-imagemin");
+var optipng = require('imagemin-optipng');
+var imageminOption = [
+  optiping({ optimizationLevel: 5 }),
+  mozjpeg({ quality: 85 }),
+  imagemin.gifsicle({
+  interlaced: false,
+  optimizationLevel: 1,
+  colors: 256
+  }),
+  imagemin.mozjpeg(),
+  imagemin.optipng(),
+  imagemin.svgo()
+  ];
+
 let ejs = require("gulp-ejs");
 let rename = require("gulp-rename"); //.ejsの拡張子を変更
 
@@ -47,30 +59,6 @@ gulp.watch('./ejs/**/*.ejs',gulp.task('ejs') ) ; //ejsが更新されたらgulp-
 gulp.watch('./ejs/**/*.ejs',gulp.task('bs-reload') ) ; //ejsが更新されたらbs-reloadを実行
 });
 // default
-gulp.task('default', gulp.series(gulp.parallel('browser-sync', 'watch')));
-//圧縮率の定義
-let imageminOption = [
-optipng({ optimizationLevel: 5 }),
-mozjpeg({ quality: 85 }),
-// imagemin.gifsicle({
-// interlaced: false,
-// optimizationLevel: 1,
-// colors: 256
-// }),
-// imagemin.mozjpeg(),
-// imagemin.optipng(),
-// imagemin.svgo()
-];
-// 画像の圧縮
-// $ gulp imageminで./src/img/base/フォルダ内の画像を圧縮し./src/img/フォルダへ
-// .gifが入っているとエラーが出る
-gulp.task('imagemin', function () {
-return gulp
-.src('./src/img/base/*.{png,jpg,gif,svg}')
-.pipe(imagemin(imageminOption))
-.pipe(gulp.dest('./src/img'));
-});
-
 
 
 gulp.task("ejs", function (done) {
@@ -82,3 +70,9 @@ gulp.task("ejs", function (done) {
     .pipe(gulp.dest("./"));
   done();
 });
+gulp.task('imagemin', function () {
+  return gulp
+  .src('./src/img/base/*.{png,jpg,gif,svg}')
+  .pipe(imagemin(imageminOption))
+  .pipe(gulp.dest('./src/img'));
+  });
