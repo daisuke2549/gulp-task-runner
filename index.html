@@ -1,2 +1,321 @@
-<h1>Hello, EJS</h1>
-<p class="ejs">EJSファイルをHTMLファイルに変換</p>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<title>山形紹介サイト(非公式)</title>
+<meta name="Keywords" content="山形非公式紹介サイト" />
+<meta name="Description" content="山形非公式紹介サイト" />
+
+<link rel="stylesheet" href="./src/css/style.css" />
+<link rel="stylesheet" href="css/slider-pro.css"/>
+
+<link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+$(function(){
+	var loader = $('.loader-wrap');
+
+	$(window).on('load',function(){
+		loader.fadeOut();
+	});
+
+	setTimeout(function(){
+		loader.fadeOut();
+	},1000);
+});
+</script>
+<div class="wrap">
+<div class="loader-wrap">
+	<div class="loader">Loading...</div>
+</div>
+
+
+
+<header>
+
+<div class="bg_bl"></div>
+
+  <div class="header-title"><h1>山形の魅力紹介サイト</h1></div>
+
+
+  <div id="navArea">
+
+    <nav>
+      <div class="inner">
+        <ul>
+          <li><a href="#about-yamagata">山形県について</a></li>
+          <li><a href="#famous-city">山形の代表的な市町村</a></li>
+          <li><a href="#travel-spot">観光スポット</a></li>
+          <li><a href="#food-choice">山形グルメ</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="toggle_btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  
+    <div id="mask"></div>
+  
+  </div>
+
+</header>
+
+
+
+
+
+<div class="slider-pro" id="top_slide">
+
+<div class="sp-slides">
+
+        <div class="sp-slide">
+        <div class="top_base cl_01"></div>
+        <div class="top_catch">山形県<br>
+<span>魅力的な山形県を紹介</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/base/yamagata-overall.map.jg" data-small="img/yamagata-prefecture-map.jpg"/>
+        </div><!-- /sp-slide -->
+
+        <div class="sp-slide">
+        <div class="top_catch">芋煮<br>
+<span>山形の郷土料理の芋煮</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/bagulop se/imoni.jpg" data-small="./src/img/base/imoni.jpg"/>
+        </div><!-- /sp-slide -->
+
+        <div class="sp-slide">
+        <div class="top_catch">玉こん<br>
+<span>山形名物玉こん</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/base/tamakonn.jpg" data-small="./src/img/base/tamakonn.jpg"/>
+        </div><!-- /sp-slide -->
+
+        <div class="sp-slide">
+        <div class="top_base cl_03"></div>
+        <div class="top_catch">さくらんぼ<br>
+<span>山形県果樹栽培面積の約 30％をさくらんぼが占めている。</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/base/cherry.jpg" data-small="./src/img/base/cherry.jpg"/>
+        </div><!-- /sp-slide -->
+
+        <div class="sp-slide">
+        <div class="top_catch">銀山温泉<br>
+<span>映画で有名になった温泉</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/base/ginzan.jpg" data-small="./src/img/base/ginzan.jpg"/>
+        </div><!-- /sp-slide -->
+
+        <div class="sp-slide">
+        <div class="top_catch">上杉神社<br>
+<span>米沢市にある神社。上杉謙信を祀る</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/base/uesugi.jpg" data-small="./src/img/base/uesugi.jpg">
+        </div><!-- /sp-slide -->
+
+        <div class="sp-slide">
+        <div class="top_base cl_02"></div>
+        <div class="top_catch">日本海<br>
+<span>日本海の潮風</span></div>
+<div class="slide_btn"><a href="#">詳しくはコチラ</a></div>
+            <img class="sp-image" src="./src/img/base/nihonnkai.jpg" data-small="img/nihonnkai.jpg"/>
+        </div><!-- /sp-slide -->
+
+</div><!-- /sp-slides -->
+
+
+</div><!-- /slider-pro -->
+<div id="about-yamagata">
+<div class="content">
+
+  <div class="cont_wrap effect d_04" >
+  <h2>山形県について<br>
+
+  <ul class="ul_about">
+  <div class="about-yamagata">山形県は、東北地方の日本海側に位置する県。山形新幹線で東京から約3時間の距離にあり、一般には、全国生産量の7割を占める「さくらんぼ」と鮮やかな四季で知られています。<br><br>
+    県内を村山地方、最上地方、置賜地方、庄内地方の４つにわけている。また、山形県は日本で唯一県内にある全ての市町村に温泉がある県として、知られ、銀山温泉、湯野浜温泉、蔵王温泉などが有名。<br><br>
+    また、さくらんぼやラフランスだけでなく、芋煮や玉こん、ご当地ラーメンといったグルメも魅力的な県である。</div>
+
+
+  <li><img src="./src/img/base/yamagata-overall.map.jpg" alt="山形県"  ></li>
+  </ul>
+
+  </div><!--/cont_wrap-->
+
+</div><!--/content-->
+</div>
+
+<div class="pickup" id="famous-city">
+    <div class="pickup-sightseeing" >
+      <h2>山形の代表的な市町村</h2></div>
+
+  <ul>
+    <li class="effect"><a href="https://www.city.yamagata-yamagata.lg.jp/" target=”_blank” ><img src="./src/img/base/murayama.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02"></span>
+  <div class="pu_title">山形市</div>
+  <p>山形県の県庁所在地。県内最大の人口を誇るとともに蔵王温泉という県外も多くの人が訪れる温泉がある。</p></a></li>
+
+  <li class="effect"><a href="https://www.city.tsuruoka.lg.jp/" target= ”blank” ><img src="./src/img/base/syonai.jpg" alt="ここを入力してください"  ><span class="pu_icon cl_02"></span>
+  <div class="pu_title">鶴岡市</div>
+  <p>庄内地方の鶴岡市。東北で1番面積の大きい市町村と言われる。クラゲがいっぱいの加茂水族館が有名</p></a></li>
+
+  <li class="effect"><a href="https://www.city.tsuruoka.lg.jp/" target= ”blank” ><img src="./src/img/base/obanazawa.jpg" alt="ここを入力してください">
+  <div class="pu_title">尾花沢市</div>
+  <p>村山地方の北部に位置する街。銀山温泉があるのはここ</p></a></li>
+
+  <li class="effect"><a href="https://www.city.yonezawa.yamagata.jp/" target= ”blank” ><img src="./src/img/base/okitama.jpg" alt="ここを入力してください" >
+  <div class="pu_title">米沢市</div>
+  <p>米沢牛で有名な米沢市。福島県との境に位置する。置賜地方で有名な市の１つ</p></a></li>
+  <li class="effect"><a href="http://www.city.shinjo.yamagata.jp/" target = ”blank” ><img src="./src/img/base/mogami.jpg" alt="ここを入力してください" ><span class="pu_icon">県庁所在地</span>
+    <div class="pu_title">新庄市</div>
+    <p>山形県北部に位置する。山形新幹線が止まる街</p></a></li>
+  
+    <li class="effect"><a href="https://www.city.higashine.yamagata.jp/" target= ”blank” ><img src="./src/img/base/murayama.jpg" alt="ここを入力してください"  height:400px;  ><span class="pu_icon cl_02"></span>
+    <div class="pu_title">東根市</div>
+    <p>さくらんぼで有名な街。さくらんぼ東根温泉が有名</p></a></li>
+  
+    <li class="effect"><a href="http://www.city.nanyo.yamagata.jp/" target= ”blank”><img src="./src/img/base/okitama.jpg" alt="ここを入力してください" >
+    <div class="pu_title">南陽市</div>
+    <p>置賜地方に属する南陽市。赤湯温泉が有名。また、龍上海が赤湯ラーメンとして全国的に有名な店</p></a></li>
+  
+    <li class="effect"><a href="http://www.city.sakata.lg.jp/" target= ”blank” ><img src="./src/img/base/syonai.jpg" alt="ここを入力してください" >
+    <div class="pu_title">酒田市</div>
+    <p>海産物が有名.酒田ラーメンや酒田港で水揚げされる海の幸を求め、県内外からの観光客も多い。</p></a></li>
+  </ul>
+  <div class="pickup-comment">
+    ※写真をクリックすると各市町村のホームページへつながります。
+</div> 
+<div class="pickup-sightseeing-spot" id="travel-spot">
+    <div class="pickup-sightseeing-spot-header"><h2>おすすめ観光スポット</h2></div>
+    <div class="pickup-spot">
+
+    <ul>
+
+    <li class="effect"><a href="" ><img src="./src/img/base/yonezawa.jpg" alt="ここを入力してください" ><span class="pu_icon">米沢城</span>
+    <div class="pu_title">米沢城</div>
+    <p>伊達政宗が生まれた城</p></a></li>
+
+    <li class="effect"><a href="#" ><img src="./src/img/base/ginzan-hotspring.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">銀山温泉</span>
+    <div class="pu_title">銀山温泉</div>
+    <p>映画おしんの舞台になった場所</p></a></li>
+
+    <li class="effect"><a href="#" ><img src="./src/img/base/zaou.jpg" alt="ここを入力してください" ><span class="pu_icon">蔵王温泉</span>
+    <div class="pu_title">蔵王温泉</div>
+    <p>冬はスキーも楽しめる蔵王温泉。県内外からも多くの人が訪れる</p></a></li>
+
+    <li class="effect"><a href="#" ><img src="./src/img/base/Tsuruoka-aqua.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">加茂水族館</span>
+    <div class="pu_title">加茂水族館</div>
+    <p>鶴岡市にあるクラゲで有名な水族館</p></a></li>
+    <li class="effect"><a href="#" ><img src="./src/img/base/takahana_wine.jpg" alt="ここを入力してください" ><span class="pu_icon">高畠ワイナリー</span>
+      <div class="pu_title">高畠ワイナリー</div>
+      <p>ブドウの名産地である高畠町に観光もできるワイナリー。ワイン好きは必見のスポット</p></a></li>
+      <li class="effect"><a href="#" ><img src="./src/img/base/sagae.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">道の駅寒河江チェリーランド</span>
+        <div class="pu_title">道の駅寒河江チェリーランド</div>
+        <p>県内最大級の道の駅。地元食材を購入でき、週末は多くの人で賑わう。</p></a></li>
+        <li class="effect"><a href="#" ><img src="./src/img/base/yunohama.jpg" alt="ここを入力してください" ><span class="pu_icon">湯野浜温泉</span>
+          <div class="pu_title">湯野浜温泉</div>
+          <p>日本海を一望できる湯野浜温泉。潮風を感じながらの入浴は最高。宿泊施設も多数。
+          </p></a></li>
+          <li class="effect"><a href="#" ><img src="./src/img/base/sakata-kaisennichiba.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">さかた海鮮市場</span>
+            <div class="pu_title">さかた海鮮市場</div>
+            <p>酒田港のすぐそばにあり、日本海で水揚げされたばかりの新鮮で美味しい魚を味わえる。</p></a></li>
+
+    </ul>
+    </div>
+</div>
+<div class="pickup-food" id= "food-choice">
+    <div class="pickup-sightseeing-spot-header"><h2>山形グルメ</h2></div>
+    <div class="pickup-food-content">
+
+    <ul>
+
+    <li class="effect"><a href="" ><img src="./src/img/base/imoni.jpg" alt="ここを入力してください" ><span class="pu_icon">芋煮</span>
+    <div class="pu_title">芋煮</div>
+    <p>山形と宮城で食べられる芋煮。冬になると芋煮会というイベントが開かれるほど有名な郷土料理。山形は醤油ベース、宮城は味噌ベースで味付けされるという違いがある。</p></a></li>
+
+    <li class="effect"><a href="#" ><img src="./src/img/base/tamakonn.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">玉コン</span>
+    <div class="pu_title">玉コン</div>
+    <p>山形を代表するソウルフード。観光名所のお土産屋さん、お祭りの出店、道の駅など、人が集まる場所へ行けばだいたい食べられる。</p></a></li>
+
+    <li class="effect"><a href="#" ><img src="./src/img/base/yonezawa-beef.jpg" alt="ここを入力してください" ><span class="pu_icon">米沢牛</span>
+    <div class="pu_title">米沢牛</div>
+    <p>三大和牛の１つ。米沢駅前に美味しい店が多数。</p></a></li>
+
+    <li class="effect"><a href="#" ><img src="./src/img/base/sakata-ramen.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">酒田ラーメン</span>
+    <div class="pu_title">酒田ラーメン</div>
+    <p>山形県酒田市を中心に食べられている庄内地方発祥のラーメン。豚骨・鶏がら・煮干・昆布を出汁に使用し、自家製麺比率が非常に高い</p></a></li>
+    <li class="effect"><a href="#" ><img src="./src/img/base/akayu-ramen.jpg" alt="ここを入力してください" ><span class="pu_icon">赤湯ラーメン</span>
+      <div class="pu_title">赤湯ラーメン</div>
+      <p>南陽市（旧赤湯町）のご当地ラーメン。龍上海という全国的に有名なラーメン店があり、とても美味しい。ちなみに神奈川県横浜市のラーメン博物館でも龍上海のラーメンを食べることができる。</p></a></li>
+      <li class="effect"><a href="#" ><img src="./src/img/base/dadacya.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">だだちゃ豆スイーツ</span>
+        <div class="pu_title">だだちゃ豆スイーツ</div>
+        <p>庄内地方の鶴岡市で名産となるだたちゃ豆(枝豆)を使ったスイーツ。ソフトクリームやジェラートなどのスイーツが楽しめる。</p></a></li>
+        <li class="effect"><a href="#" ><img src="./src/img/base/cherry.jpg" alt="ここを入力してください" ><span class="pu_icon">さくらんぼ</span>
+          <div class="pu_title">さくらんぼ</div>
+          <p>日本一の生産量を誇る山形のさくらんぼ。東根市がさくらんぼの生産で有名で、県内の至るところでさくらんぼ関連のグルメが楽しめる。</p>
+          </a></li>
+          <li class="effect"><a href="#" ><img src="./src/img/base/rafurannsu.jpg" alt="ここを入力してください" ><span class="pu_icon cl_02">ラフランス</span>
+            <div class="pu_title">ラフランス</div>
+            <p>山形県が全国の生産量の約8割を占める、山形県を代表する果物の一つ。</p></a></li>
+
+    </ul>
+    </div>
+</div>
+</div>
+<footer>
+
+
+
+<address>
+  Copyright: Made by Daisuke Sasaki
+</address>
+
+
+</footer>
+
+
+
+<div class="to_top"><a href="#" title="トップへ戻る"><i class="fas fa-chevron-up"></i></a></div>
+
+
+<script src="./src/js/jquery.fancybox.js"></script>
+<script src="./src/js/jquery.inview.min.js"></script>
+<script src="./src/js/jquery.sliderPro.min.js"></script>
+<script src="./src/js/mailform.js"></script>
+<script src="./src/js/script.js"></script>
+
+<script>
+$( document ).ready(function( $ ) {
+  $('#top_slide').sliderPro({
+    width: 1400,
+    arrows: true,
+	buttons: true,
+    aspectRatio: 1.8,
+    slideDistance:0,
+	fadeDuration: 1000,
+	smallSize: 640,
+	visibleSize:"100%",
+    breakpoints: {
+      640: {
+	  width: '100%',
+	  arrows: false,
+	  aspectRatio: 1.6,
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
