@@ -1,11 +1,10 @@
 let gulp = require('gulp');
-let sass = require('gulp-sass'); //Sassコンパイル
+let sass = require('gulp-sass')(require('sass'));
 let plumber = require('gulp-plumber'); //エラー時の強制終了を防止
 let notify = require('gulp-notify'); //エラー発生時にデスクトップ通知する
 let sassGlob = require('gulp-sass-glob'); //@importの記述を簡潔にする
-let browserSync = require( 'browser-sync' ); //ブラウザ反映
-let postcss = require('gulp-postcss'); //autoprefixerとセット
-let autoprefixer = require('autoprefixer'); //ベンダープレフィックス付与
+let browserSync = require( 'browser-sync' ); //ブラウザを自動的にリロード
+let autoprefixer = require('gulp-autoprefixer'); //ベンダープレフィックスをつける
 let cssdeclsort = require('css-declaration-sorter'); //css並べ替え
 // let imagemin = require('gulp-imagemin');
 let optipng = require('imagemin-optipng');
@@ -13,23 +12,17 @@ let mozjpeg = require('imagemin-mozjpeg');
 let ejs = require("gulp-ejs");
 let rename = require("gulp-rename"); //.ejsの拡張子を変更
 
-
 startPath: '/index.html'
 // scssのコンパイル
 gulp.task('sass', function() {
 return gulp
-.src( './src/scss/**/*.scss' )
+.src( './src/scss/style.scss' )
 .pipe( plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }) )//エラーチェック
 .pipe( sassGlob() )//importの読み込みを簡潔にする
 .pipe( sass({
-outputStyle: 'expanded' //expanded, nested, campact, compressedから選択
+outputStyle: 'compressed' //expanded, nested, campact, compressedから選択
 }) )
-.pipe( postcss([ autoprefixer(
-{
-"overrideBrowserslist": ["last 2 versions", "ie >= 11", "Android >= 5"],
-cascade: false}
-) ]) )
-.pipe( postcss([ cssdeclsort({ order: 'alphabetically' }) ]) )//プロパティをソートし直す(アルファベット順)
+.pipe(autoprefixer()) //prefix
 .pipe(gulp.dest('./src/css'));//コンパイル後の出力先
 });
 gulp.task( 'browser-sync', function(done) {
@@ -47,7 +40,7 @@ done();
 });
 gulp.task("ejs", (done) => {
 gulp
-.src(["ejs/**/*.ejs", "!" + "ejs/**/_*.ejs"])
+.src(["./*.ejs"])
 .pipe( plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }) )//エラーチェック
 .pipe(ejs())
 .pipe(rename({extname: ".html"})) //拡張子をhtmlに
