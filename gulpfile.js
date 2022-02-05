@@ -12,6 +12,9 @@ let optipng = require('imagemin-optipng');
 let mozjpeg = require('imagemin-mozjpeg');
 let ejs = require("gulp-ejs");
 let rename = require("gulp-rename"); //.ejsの拡張子を変更
+
+
+startPath: '/index.html'
 // scssのコンパイル
 gulp.task('sass', function() {
 return gulp
@@ -29,10 +32,8 @@ cascade: false}
 .pipe( postcss([ cssdeclsort({ order: 'alphabetically' }) ]) )//プロパティをソートし直す(アルファベット順)
 .pipe(gulp.dest('./src/css'));//コンパイル後の出力先
 });
-// 保存時のリロード
 gulp.task( 'browser-sync', function(done) {
 browserSync.init({
-//ローカル開発
 server: {
 baseDir: "./",
 index: "index.html"
