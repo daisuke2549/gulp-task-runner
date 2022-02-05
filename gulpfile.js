@@ -5,24 +5,13 @@ let notify = require('gulp-notify'); //エラー発生時にデスクトップ�
 let sassGlob = require('gulp-sass-glob'); //@importの記述を簡潔にする
 let browserSync = require( 'browser-sync' ); //ブラウザを自動的にリロード
 let autoprefixer = require('gulp-autoprefixer'); //ベンダープレフィックスをつける
-const { src, dest, series, parallel, watch } = require("gulp");
-const imagemin = require("gulp-imagemin");
-var optipng = require('imagemin-optipng');
-var imageminOption = [
-  optiping({ optimizationLevel: 5 }),
-  mozjpeg({ quality: 85 }),
-  imagemin.gifsicle({
-  interlaced: false,
-  optimizationLevel: 1,
-  colors: 256
-  }),
-  imagemin.mozjpeg(),
-  imagemin.optipng(),
-  imagemin.svgo()
-  ];
-
 let ejs = require("gulp-ejs");
 let rename = require("gulp-rename"); //.ejsの拡張子を変更
+let { src, dest, series, parallel, watch } = require("gulp");
+const imagemin = require('gulp-imagemin');
+const mozjpeg = require('imagemin-mozjpeg');
+const pngquant = require('imagemin-pngquant');
+const changed = require('gulp-changed');
 
 startPath: '/index.html'
 // scssのコンパイル
@@ -59,7 +48,7 @@ gulp.watch('./ejs/**/*.ejs',gulp.task('ejs') ) ; //ejsが更新されたらgulp-
 gulp.watch('./ejs/**/*.ejs',gulp.task('bs-reload') ) ; //ejsが更新されたらbs-reloadを実行
 });
 // default
-
+gulp.task('default', gulp.series(gulp.parallel('browser-sync', 'watch')));
 
 gulp.task("ejs", function (done) {
   return gulp
@@ -72,7 +61,7 @@ gulp.task("ejs", function (done) {
 });
 gulp.task('imagemin', function () {
   return gulp
-  .src('./src/img/base/*.{png,jpg,gif,svg}')
-  .pipe(imagemin(imageminOption))
-  .pipe(gulp.dest('./src/img'));
-  });
+    .src('./src/img/base/*.+(png|jpg|jpeg|gif|svg)')
+    .pipe(imagemin()) //imageを最適化
+    .pipe(gulp.dest('./src/img/'));
+});
