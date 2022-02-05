@@ -15,7 +15,7 @@ const changed = require('gulp-changed');
 
 startPath: '/index.html'
 // scssのコンパイル
-gulp.task('sass', function() {
+gulp.watch('sass', function() {
 return gulp
 .src( './src/scss/style.scss' )
 .pipe( plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }) )//エラーチェック
@@ -64,4 +64,10 @@ gulp.task('imagemin', function () {
     .src('./src/img/base/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(imagemin()) //imageを最適化
     .pipe(gulp.dest('./src/img/'));
+});
+
+
+gulp.task("gulptest", (done) => {
+  console.log("gulp4系のテストです");
+  done();
 });
