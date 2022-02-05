@@ -1,3 +1,7 @@
+// gulpがインストールされていないと表示されたら以下を実行
+// export PATH=$PATH:./node_modules/.bin
+
+
 let gulp = require('gulp');
 let sass = require('gulp-sass')(require('sass'));
 let plumber = require('gulp-plumber'); //エラー時の強制終了を防止
@@ -71,3 +75,11 @@ gulp.task("gulptest", (done) => {
   console.log("gulp4系のテストです");
   done();
 });
+
+
+
+
+
+
+
+
